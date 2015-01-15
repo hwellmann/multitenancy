@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  <!-- conflicts with JBoss Logging -->
+  <!--contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator"/-->
+
+  <!--  log to System.out on console  -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <!--  log to file  -->
+  <appender name="LOGFILE" class="ch.qos.logback.core.FileAppender">
+    <file>target/tickeos.log</file>
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="LOGFILE"/>
+  </root>
+  
+  <!--  set to TRACE to monitor login and security interceptors -->
+  <logger name="org.jboss.security" level="INFO"/>
+
+  <!--  set to TRACE to see all CDI beans -->
+  <logger name="org.jboss.weld" level="INFO"/>
+
+  <!-- suppress warnings caused by DeltaSpike -->
+  <logger name="org.jboss.weld.Bootstrap" level="ERROR"/>
+  
+  <!--  set to DEBUG to log 2nd level cache operations -->
+  <logger name="org.hibernate" level="TRACE"/>
+
+  <!--  set to DEBUG to log 2nd level cache operations -->
+  <logger name="org.hibernate.cache" level="INFO"/>
+  
+  <!--  set to DEBUG to log SQL statements -->
+  <logger name="org.hibernate.SQL" level="INFO"/>
+  
+  <!--  set to TRACE to log SQL parameters -->
+  <logger name="org.hibernate.type" level="INFO"/>
+
+  <!-- set to INFO to log Hibernate table creation -->
+  <logger name="java.sql.DatabaseMetaData" level="WARN"/>
+  
+  <!-- set to DEBUG to log data field values of render manager -->
+  <logger name="com.tickeos.core.service.impl.render" level="INFO"/>
+  
+  <!-- set to DEBUG to log values of property map -->
+  <logger name="com.tickeos.core.service.property" level="INFO"/>
+
+  
+</configuration>

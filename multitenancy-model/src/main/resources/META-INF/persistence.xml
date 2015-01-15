@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+    <persistence-unit name="library">
+        <jta-data-source>jdbc/multi</jta-data-source>
+        <properties>
+            <!--property name="hibernate.hbm2ddl.auto" value="update" /-->
+
+            <property name="hibernate.connection.datasource" value="jdbc/multi" />
+
+            <property name="hibernate.multiTenancy" value="SCHEMA" />
+            <property name="hibernate.multi_tenant_connection_provider" value="com.blogspot.hwellmann.multitenancy.hibernate.SchemaMultiTenantConnectionProvider" />
+            <property name="hibernate.tenant_identifier_resolver" value="com.blogspot.hwellmann.multitenancy.hibernate.TenantResolver" />
+            <property name="hibernate.multi_tenant.datasource.identifier_for_any" value="multi"/>
+
+        </properties>
+    </persistence-unit>
+
+</persistence>
